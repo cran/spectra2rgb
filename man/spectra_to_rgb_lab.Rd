@@ -24,7 +24,9 @@ or index in \code{df}. If \code{NULL}, the row names are used, or
 0), \code{"drop"} (remove all-NA rows with a warning), or
 \code{"keep"} (preserve NA in the output).}
 
-\item{white}{Reference white point for XYZ -> sRGB.}
+\item{white}{Reference white point used for both the XYZ-to-sRGB and
+direct XYZ-to-CIELAB conversions. XYZ values and the white point
+use the same tristimulus scale.}
 }
 \value{
 A data.frame with columns \code{Sample_ID}, \code{R}, \code{G},
@@ -32,4 +34,9 @@ A data.frame with columns \code{Sample_ID}, \code{R}, \code{G},
 }
 \description{
 Convert a data frame of spectra to sRGB and CIELAB
+}
+\details{
+RGB and CIELAB coordinates are calculated independently from
+  the same unquantized CIE XYZ tristimulus values. The CIELAB calculation
+  does not pass through 8-bit sRGB values.
 }
